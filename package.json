@@ -1,0 +1,9 @@
+{
+  "name": "kmonad",
+  "description": "kmonad config API and runtime",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "^0.1.0"
+  }
+}
