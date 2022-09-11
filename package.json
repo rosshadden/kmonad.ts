@@ -1,8 +1,11 @@
 {
   "name": "kmonad",
   "description": "kmonad config API and runtime",
-  "module": "index.ts",
+  "module": "./src/main.ts",
   "type": "module",
+  "scripts": {
+    "main": "bun ./src/main.ts"
+  },
   "devDependencies": {
     "bun-types": "^0.1.0"
   }
