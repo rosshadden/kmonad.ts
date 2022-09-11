@@ -1,5 +1,9 @@
 export type Atom = boolean | string | number | Key;
 
+export type Expression = Atom | Sexp;
+
+export type SexpMap = { [key: string]: Expression };
+
 export class Key {
 	constructor(public name: string) {}
 
@@ -9,7 +13,7 @@ export class Key {
 }
 
 export class Sexp {
-	static fromObject(name: string, values: { [key: string]: Sexp | Atom }) {
+	static fromObject(name: string, values: SexpMap) {
 		const list = [];
 
 		for (let key of Object.keys(values)) {
@@ -20,10 +24,10 @@ export class Sexp {
 		return new Sexp(name, list);
 	}
 
-	constructor(public name: string, public list: Array<Sexp | Atom>) {}
+	constructor(public name: string, public list: Array<Expression>) {}
 
 	public toString(): string {
-		let result = [
+		const result = [
 			this.name,
 			...this.list.map((item) => {
 				if (typeof item === "string") return `"${item}"`;

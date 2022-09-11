@@ -1,17 +1,27 @@
-import { Atom, Sexp } from "./sexp";
+import { Expression } from "./sexp";
 
 interface Keymap {
-	[key: string]: Atom | Sexp;
+	[key: string]: Expression;
 }
 
 export class Layer {
-	static empty(): Layer {
-		return new Layer(null, {});
-	}
-
 	constructor(public name: string, protected keymap: Keymap) {}
 
 	public toString(): string {
-		return "";
+		const result = [
+		];
+
+		return `(deflayer ${result.join(' ')})`;
+	}
+}
+
+export class Source {
+	constructor(protected keys: Keymap) {}
+
+	public toString(): string {
+		const result = [
+		];
+
+		return `(defsrc ${result.join(' ')})`;
 	}
 }
